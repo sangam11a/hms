@@ -1,0 +1,106 @@
+
+body{
+margin-top:20px;
+background:#FAFAFA;
+    }
+  .order-card {
+      color: #fff;
+  }
+  .circleInfo{
+    border-radius: 50%;
+    height:210px;width:200px;
+    margin-left:32px;
+    border:1px solid rgba(14,26,55,0.46);
+    padding-top:43px;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+  }
+  .number{padding-left:70px;
+      font-size:42px
+  }
+  .bg-c-blue {
+      background: linear-gradient(45deg,#4099ff,#73b4ff);
+  }
+
+  .bg-c-green {
+      background: linear-gradient(45deg,#5fd169,#59e0c5);
+  }
+
+  .bg-c-yellow {
+      background:#fee715e0;
+      color:rgba(14,26,55,0.46);
+       /* linear-gradient(45deg,#FFB64D,#ffcb80); */
+  }
+
+  .bg-c-pink {
+      background: linear-gradient(45deg,#FF5370,#ff869a);
+  }
+  .border-c-blue {
+      border:2px solid royalblue;
+      color:rgb(200,20,225); 
+  }
+
+  .border-c-green {
+      border:2px solid #5F0121;
+      color:royalblue;
+  }
+
+  .border-c-yellow {
+      border:2px solid tomato;
+      color:#7AD9C4; 
+  }
+
+  .border-c-pink {
+      border:2px solid #7AD9C4;
+      color:tomato;
+  }
+
+  .card {
+      border-radius: 5px;
+      -webkit-box-shadow: 1px 1px 2.94px 0.26px rgba(14,26,55,0.46);
+      box-shadow: 2px 1px 2.94px 0.86px rgba(4,26,55,0.16);
+      border: none;
+      color:white;
+      margin-bottom: 30px;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+  }
+
+  .card .card-block {
+      padding: 25px;
+      border-radius:5px;
+  }
+
+  .order-card i {
+      font-size: 26px;
+  }
+
+  .f-left {
+      float: left;
+  }
+
+  .f-right {
+      float: right;
+  }
+  .first_half,.second_half{
+      border:1px solid red;
+      display:inline-flex;
+  }
+  .card_body{
+      padding:10px;
+  }
+  .title_dashboard{
+      padding:12px;
+  }
+  .tble{
+      border-top:3px solid red;
+      margin-left:10px;
+  }
+  .circleInfo .text{
+      font-weight:600;
+      font-size: 20px;
+      padding-left: 22px;
+  }
+  .circleInfo .number{
+      font-weight: bold;
+  }
