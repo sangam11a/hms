@@ -9,7 +9,7 @@ date_default_timezone_set('Asia/Kathmandu');
                 
 /*A4 width : 219mm*/
 
-$pdf = new FPDF('P','mm',[76.2,152.4]);
+$pdf = new FPDF('P','mm',[76.2,128.4]);
 $bill_number=0;
 $name="";
 $result=mysqli_query($conn,"Select * from temp_table_print");
@@ -25,8 +25,8 @@ $pdf->SetFont('Arial','B',14);
 
 // $pdf->Cell(48 ,2,'Kitchen Bill',0,1,'C');
 
-$pdf->cell(47,5,'Order for table number : ',0,0,'C');
-// $pdf->cell(47,10,$result[0]["table_number"]);
+$row1=mysqli_fetch_assoc($result);
+$pdf->cell(47,5,'Order for table number : '.$row1["table_number"],0,0,'C');
 $pdf->Ln();
 
 
@@ -81,7 +81,8 @@ try{
     mysqli_query($conn,"Truncate table `temp_table_print`");
 }
 catch(Exception $error){
- echo "<Script>alert('Error occured plz try again ');</script>";
+ echo "<Script>alert('Error occured plz try again ');location.href='../order/Overall_orders.php';</script>";
+
 }
 
 ?>
