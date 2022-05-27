@@ -8,7 +8,8 @@
   <script>
     function print_orders_js(){
       let y=location.href.split("/order/")[0];
-      window.open(y[0]+"/print/kitchen_bill.php","_blank");
+      alert(y+"/print/kitchen_bill.php")
+      window.open(y+"/print/kitchen_bill.php","_blank");
 
     }
  </script>
@@ -82,9 +83,12 @@ if(isset($_POST['final_placement'])){
           $price=$price*(-1);
         }
         
+        $temp_table->insert_print_table($array[$i++],$array[$i],$table_name);    
+        $i--;
         $result4=$order->insert_temp_table($array[$i++],$price,$array[$i],$table_name,$name,$room_number);
         $i--;
-        $result3=$temp_table->insert_temp_table($name,$array[$i++],$array[$i],$price);
+        $result3=$temp_table->insert_temp_table($name,$array[$i++],$array[$i],$price);      
+        
         // $result4=$order->insertion_temp_table($array[$i++],$price,$array[$i],$table_name);
           if($result3==0&&$result4==0){
                       $error=0;
@@ -96,8 +100,9 @@ if(isset($_POST['final_placement'])){
       
     }
     
-    $print_data_status=$temp_table->insert_print_table($name,$table_name);
+    // 
   }
+  // $print_data_status=$temp_table->insert_print_table($name,$table_name);
   if($error==0){
     echo "<div class='alert alert-warning'>";
                       echo "<script>alert('Order cannot be placed to database...Plz reorder everything')</script>";
@@ -109,7 +114,7 @@ if(isset($_POST['final_placement'])){
     $sql2="Update table_details set status='occupied' where table_number='$table_name'";
     $order->insert_to_booking($sql2);
     echo "</div>";
-    echo "<script>location.href='Overall_orders.php';print_orders_js();</script>";
+    echo "<script>location.href=location.href.split('/order/')[0]+'/print/kitchen_bill.php';</script>";
   }
   $result1=$order->get_temp_tables("Select name,quantity,price from `inventory`",1);
   for($i=0;$i<count($array);$i+=1){

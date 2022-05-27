@@ -339,16 +339,32 @@ class Temptable{
         $stmt=$this->connect()->prepare($sql);
         $stmt->execute();
     }
-    public function insert_print_table($name,$table_number){
-        $sql="Insert into kitchen_print('table_number','customer_name') values (?,?)";
+    // public function insert_print_table($name,$table_number){
+    //     $sql="INSERT INTO `kitchen_print`(`table_number`, `customer_name`) values ('$table_number','$name')";
+    //     echo $sql;
+    //     $stmt=$this->connect()->prepare($sql);
+    //     if($stmt->execute()){
+    //        return 1;
+    //     }
+    //     else{
+    //         return(0);
+    //     }
+    // }
+
+    public function insert_print_table($order,$quantity,$table_number){
+        // $name = str_replace(' ', '_', $name);
+        $time=date("H:i:s");
+        $sql="Insert into temp_table_print(`order_name`,`quantity`,`table_number`,`time`) values('$order','$quantity','$table_number','$time');";        
+        echo $sql;
         $stmt=$this->connect()->prepare($sql);
-        if($stmt->execute([$table_number,$name])){
+        if($stmt->execute()){
            return 1;
         }
         else{
-            return(0);
+            return 0;
         }
     }
+
     public function insert_temp_table($name,$order,$quantity,$price){
         $name = str_replace(' ', '_', $name);
         $sql="Insert into $name(`order_name`,`quantity`,`price`,`date1`,`time1`) values(?,?,?,?,?);";        
