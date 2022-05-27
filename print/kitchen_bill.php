@@ -78,7 +78,7 @@ $pdf->SetFont("Arial",'',8);
 $pdf->cell(0,0,"-----------------------------------------------------");
 try{
     $pdf->output('I', 'bill.php');
-    
+    mysqli_query($conn,"Truncate table `temp_table_print`");
 }
 catch(Exception $error){
  echo "<Script>alert('Error occured plz try again ');</script>";
