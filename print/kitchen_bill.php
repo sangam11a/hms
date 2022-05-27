@@ -3,7 +3,16 @@
 require_once "../helpers/funtions.php";
 checkLogin();
 require('fpdf184/fpdf.php');
+if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')   
+$url = "https://";   
+else  
+$url = "http://";   
+// Append the host(domain name, ip) to the URL.   
+$url.= $_SERVER['HTTP_HOST'];   
 
+// Append the requested resource location to the URL   
+$url.= $_SERVER['REQUEST_URI'];    
+$this_url=explode("/print",$url);
 $conn=mysqli_connect("localhost","root","","temporary_data_peaceresort");
 date_default_timezone_set('Asia/Kathmandu');
                 
@@ -72,7 +81,7 @@ while($row=mysqli_fetch_assoc($result))
 $pdf->Ln();
 
 $pdf->SetFont("Arial",'U',11);
-$pdf->Write(20,"Goto Overall Orders","http://localhost/hmsss/order/Overall_orders.php");
+$pdf->Write(20,"Goto Overall Orders",$this_url[0]."/order/Overall_orders.php");
 $pdf->Ln();
 $pdf->SetFont("Arial",'',8);
 $pdf->cell(0,0,"-----------------------------------------------------");
@@ -81,7 +90,7 @@ try{
     mysqli_query($conn,"Truncate table `temp_table_print`");
 }
 catch(Exception $error){
- echo "<Script>alert('Error occured plz try again ');location.href='../order/Overall_orders.php';</script>";
+ echo "<Script>alert('Error occured plz try again ');//location.href='../order/Overall_orders.php';</script>";
 
 }
 
