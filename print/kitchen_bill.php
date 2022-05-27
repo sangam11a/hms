@@ -1,7 +1,7 @@
      
-        <?php
-        require_once "../helpers/funtions.php";
-        checkLogin();
+<?php
+require_once "../helpers/funtions.php";
+checkLogin();
 require('fpdf184/fpdf.php');
 
 $conn=mysqli_connect("localhost","root","","peaceresort");
@@ -11,6 +11,7 @@ date_default_timezone_set('Asia/Kathmandu');
 
 $pdf = new FPDF('P','mm',[76.2,152.4]);
 $bill_number=0;
+
 $result=mysqli_query($conn,"Select Count(Distinct time1) from sold_items");
 while($bill=mysqli_fetch_assoc($result)){
   $billnumber=$bill["Count(Distinct time1)"];
@@ -24,40 +25,15 @@ $pdf->AddPage();
 /*output the result*/
 
 // $pdf->Image('logo.png',7,3,15);
+
 $pdf->SetFont('Arial','B',14);
-$pdf->Cell(48 ,3,'Peace garden Resort',0,1,'C');
+$pdf->cell(0,10,"-----------------------------------------------------");
 $pdf->Ln();
-// // 
-// $pdf->SetFont('Arial','B',14);
-// $pdf->Cell(0 ,3,'Talpona Beach, MDR48, Canacona, Goa, 403702',0,1,'C');
-// $pdf->Ln();
-$pdf->SetFont('Arial','I',11);
-$pdf->Cell(1,4);
-$pdf->Cell(0,6,'Talpona Beach, MDR48, Canacona');
-$pdf->Ln();
+$pdf->SetFont('Arial','B',14);
 
-$pdf->SetFont('Arial','I',12);
-$pdf->Cell(3,6);
-$pdf->Cell(0,6,'Whatsapp/Phone');
-$pdf->Ln();
+$pdf->Cell(48 ,4,'Kitchen Bill',0,1,'C');
 
-$pdf->Cell(3,0);
-$pdf->Cell(0,6,'+91-9168350727');
-$pdf->Ln();
-$pdf->SetFont("Arial",'B',12);
-$pdf->cell(0,5,'',0,1);
-$pdf->Cell(15,4,'Bill no:',0,0,'L');
-$pdf->Cell(0,4,$billnumber,0,0);
-
-$pdf->SetFont("Arial",'B',12);
-$pdf->cell(-15,4,'Date:',0,0,'R');
-  $date=date("Y-m-d");
-  $pdf->cell(0,4,$date,0,1);
-
-$pdf->SetFont("Arial",'B',12);
-$pdf->Cell(11,4,'Name :',0,0);
-$pdf->Cell(29,4,$name);
-
+$pdf->cell(47,5,'Order for table number : ',0,0,'C');
 $pdf->Ln();
 
 $pdf->SetFont("Arial",'B',12);
@@ -93,25 +69,10 @@ $pdf->cell(10,5,$qty,1,0);
 $pdf->cell(15,5,$subtotal,1,1);
 $total=$total+(float)$subtotal;
 }
-$tax=(($tax/100)*$total);
-$discount=($discount/100)*$total;
-$pdf->cell(25,5,'',0,0,'L');
-$pdf->cell(22,5,'Sub-Total',0,0);
-$pdf->cell(15,5,$total,1,1,'C');
 
-$pdf->cell(25,5,'',0,0,'L');
-$pdf->cell(22,5,'Discount',0,0);
-$pdf->cell(15,5,$discount,1,1,'C');
 
-$pdf->cell(35,5,'',0,0,'L');
-$pdf->cell(12,5,'Tax',0,0);
-$pdf->cell(15,5,$tax,1,1,'C');
-$total=$total+$tax-$discount;
-$pdf->cell(35,5,'',0,0,'L');
-$pdf->cell(12,5,'Total',0,0);
-$pdf->cell(15,5,$total,1,1,'C');
-
-$pdf->cell(47,5,'!!!!Thank you for visiting us!!!!',0,0,'C');
+$pdf->Ln();
+$pdf->cell(0,0,"-----------------------------------------------------");
 try{
     $pdf->output('I', 'bill.php');
     mysqli_query($conn,"TRUNCATE TABLE print_table");//empty table after each receipt is printed

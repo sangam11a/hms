@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders</title>
+  <script>
+    function print_orders_js(){
+      let y=location.href.split("/order/")[0];
+      window.open(y[0]+"/print/kitchen_bill.php","_blank");
+
+    }
+ </script>
+</head>
+<body>
+  
+</body>
+</html>
 <?php 
 include_once "../layout/header.php";
  include_once "../classes/order_db.php";
@@ -76,6 +95,8 @@ if(isset($_POST['final_placement'])){
       }
       
     }
+    
+    $print_data_status=$temp_table->insert_print_table($name,$table_name);
   }
   if($error==0){
     echo "<div class='alert alert-warning'>";
@@ -88,7 +109,7 @@ if(isset($_POST['final_placement'])){
     $sql2="Update table_details set status='occupied' where table_number='$table_name'";
     $order->insert_to_booking($sql2);
     echo "</div>";
-    echo "<script>location.href='Overall_orders.php';</script>";
+    echo "<script>location.href='Overall_orders.php';print_orders_js();</script>";
   }
   $result1=$order->get_temp_tables("Select name,quantity,price from `inventory`",1);
   for($i=0;$i<count($array);$i+=1){

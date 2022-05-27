@@ -138,6 +138,19 @@ class Order extends Dbh{
         }
         else return 0;
     }
+    public function insert_print_table($food_item,$price,$quantity,$table_number,$name,$room_number){
+        $total=0.0;
+        $total=$quantity*$price; 
+        $date=date("Y-m-d");
+        $time=date("H:i:s");
+        $sql="Insert into temp_table(`table_number`,`food_item`,`price`,`quantity`,`date1`,`time1`,`total`,`customer_name`,`room_number`) values('$table_number','$food_item','$price',$quantity,'$date','$time',$total,'$name','$room_number')";
+        
+        $stmt=$this->connect()->prepare($sql);
+        if($stmt->execute()){
+            return 1;
+        }
+        else return 0;
+    }
 
     public function get_temp_tables($sql,$count=0){
 
@@ -325,6 +338,16 @@ class Temptable{
         echo "<script>alert('".$name."')</script>";
         $stmt=$this->connect()->prepare($sql);
         $stmt->execute();
+    }
+    public function insert_print_table($name,$table_number){
+        $sql="Insert into kitchen_print('table_number','customer_name') values (?,?)";
+        $stmt=$this->connect()->prepare($sql);
+        if($stmt->execute([$table_number,$name])){
+           return 1;
+        }
+        else{
+            return(0);
+        }
     }
     public function insert_temp_table($name,$order,$quantity,$price){
         $name = str_replace(' ', '_', $name);

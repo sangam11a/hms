@@ -1,6 +1,6 @@
 <?php 
 require_once "../includes/init.php";
-date_default_timezone_set('Asia/Kolkata');
+date_default_timezone_set('Asia/Kathmandu');
 $check = checkLogin();
 if($_SESSION['role'] === "manager"||$_SESSION['role'] === "admin"){
     header("../rooms/dashboard_admin.php");

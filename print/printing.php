@@ -1,7 +1,7 @@
 <?php
 require_once "../helpers/funtions.php";
 checkLogin();
-date_default_timezone_set('Asia/Kolkata');
+date_default_timezone_set('Asia/Kathmandu');
 require('fpdf184/fpdf.php');
 
 $pdf = new FPDF('P', 'mm', array(80,80));
