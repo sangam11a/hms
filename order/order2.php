@@ -197,6 +197,7 @@ if(isset($_POST['final_placement'])){
               var row = table.insertRow(-1);
               var cell1 = row.insertCell(0);
               var cell2 = row.insertCell(1);
+              name=name.replaceAll("-"," ")
               cell1.innerHTML = name;
              if(sign=='+')  {quantity = "1";}
              else  {quantity = "-1";}
@@ -210,6 +211,7 @@ if(isset($_POST['final_placement'])){
          function minus_internal(id){
           console.log(id);
             var order="#order"+id;
+            order=order.replace(" ","-")
             var quantity=$(order).html();
             console.log(quantity);
             if(quantity>0){
@@ -231,6 +233,7 @@ if(isset($_POST['final_placement'])){
          }
          function plus_internal(id){
           var order="#order"+id;
+          order=order.replace(" ","-")
             var quantity=$(order).html();
             var y=Number(quantity)+1;
              $(order).html("   "+y+"   ");
@@ -324,7 +327,9 @@ if(isset($_POST['final_placement'])){
                       button+="<img src='../order/"+data[i]['menu_photo']+"' width=90% height=90% style='padding-left:5%;'><br></div>";
                       button+="<div class='card-body'><h4>";
                       button+=data[i]['item_name'];
-                      button+="<div><h5>Quantity :</h5><img onclick='minus(this)' class='minus' id='"+data[i]['item_name']+"' src='../images/minus.png' width=30px height=30px><span id='order"+data[i]['item_name']+"'>  0  </span><img class='plus' onclick='plus(this)' id='"+data[i]['item_name']+"' src='../images/plus.png' width=30px height=30px></div>";
+                      let y=data[i]['item_name'].replace(" ","-")
+                      console.log(y)
+                      button+="<div><h5>Quantity :</h5><img onclick='minus(this)' class='minus' id='"+y+"' src='../images/minus.png' width=30px height=30px><span id='order"+y+"'>  0  </span><img class='plus' onclick='plus(this)' id='"+y+"' src='../images/plus.png' width=30px height=30px></div>";
                      // button+="<div><h5>Quantity :</h5><img class='minus' id='"+data[i][i]['item_name']+"' src='../images/minus.png' width=30px height=30px><span id='order"+data[i]['item_name']+"'>  0  </span><img class='plus' id='"+data[i]['item_name']+"' src='../images/plus.png' width=30px height=30px></div>";
                       // button+="<button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#take_order_modal' onclick=\"takeOrder('"+data[i]['item_name']+"','"+data[i]['price']+"')\" style='float:right;'>"+"Order</button>";
                       button+="</h4></div></div></div>";
@@ -354,8 +359,11 @@ if(isset($_POST['final_placement'])){
                       button+="<div class='card-title '>";
                       button+="<img src='../order/"+data[i]['menu_photo']+"' width=90% height=90% style='padding-left:5%;'><br></div>";
                       button+="<div class='card-body'><h4>";
-                      button+=data[i]['item_name'];
-                      button+="<div><h5>Quantity :</h5><img onclick='minus(this)' class='minus' id='"+data[i]['item_name']+"' src='../images/minus.png' width=30px height=30px><span id='order"+data[i]['item_name']+"'>  0  </span><img onclick='plus(this)' class='plus' id='"+data[i]['item_name']+"' src='../images/plus.png' width=30px height=30px></div>";
+                      button+=data[i]['item_name'];                      
+                      let y=data[i]['item_name'].replace(" ","-")
+                      console.log(y)
+              
+                      button+="<div><h5>Quantity :</h5><img onclick='minus(this)' class='minus' id='"+y+"' src='../images/minus.png' width=30px height=30px><span id='order"+y+"'>  0  </span><img onclick='plus(this)' class='plus' id='"+y+"' src='../images/plus.png' width=30px height=30px></div>";
                      // button+="<button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#take_order_modal' onclick=\"takeOrder('"+data[i]['item_name']+"','"+data[i]['price']+"')\" style='float:right;'>"+"Order</button>";
                       button+="</h4></div></div></div>";
                       }
@@ -426,8 +434,10 @@ if(isset($_POST['final_placement'])){
                     echo "<img src='../order/".$result['menu_photo']."' width=90% height=90% style='padding-left:5%;'><br></div>";
 
                              echo "<div class='card-body'><h4>";
+                             $y=str_replace(" ","-",$result["item_name"]);
                              echo $result['item_name'];
-                             echo "<div><h5>Quantity :</h5><img class='minus' id='".$result['item_name']."' src='../images/minus.png' width=30px height=30px><span id='order".$result['item_name']."'>  0  </span><img class='plus' id='".$result['item_name']."' src='../images/plus.png' width=30px height=30px></div>";
+                            
+                             echo "<div><h5>Quantity :</h5><img class='minus' id='".$y."' src='../images/minus.png' width=30px height=30px><span id='order".$y."'>  0  </span><img class='plus' id='".$y."' src='../images/plus.png' width=30px height=30px></div>";
                                 // echo "<button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#take_order_modal' onclick=\"takeOrder('".$result['item_name']."','".$result['price']."')\" style='float:right;'>"."Order</button>";
                                 //<p class='card-text'>".$result['status']."<p><button class='btn btn-info' name='change_status' type='submit' onclick=\"change_status('".$result["status"]."')\">Change Status</button><i style='margin-left:4%;' class='far fa-eye'></i></p></p></form>";
                            echo "</h4></div>";

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            /* font-family: 'Lucida Sans'; */
+            /* , 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+            font-weight: 300;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div style='font-size:14px;font-weight:300;'>
+        asdasdsad
+    </div>
+    <div style='font-size:12px;font-weight:300;'>
+        asdasdsad
+    </div>
+    <div style='font-size:11px;font-weight:300;'>
+        asdasdsad
+    </div>
+    <div style='font-size:13px;font-weight:300;'>
+        asdasdsad
+    </div>
+
+    <div style='font-size:14px;font-weight:400;'>
+        asdasdsad
+    </div>
+    <div style='font-size:12px;font-weight:400;'>
+        asdasdsad
+    </div>
+    <div style='font-size:11px;font-weight:400;'>
+        asdasdsad
+    </div>
+    <div style='font-size:13px;font-weight:400;'>
+        asdasdsad
+    </div>
+</body>
+</html>

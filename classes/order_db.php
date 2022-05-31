@@ -335,7 +335,7 @@ class Temptable{
 
     public function create_temp_table($name){
         $sql="Create table if not exists $name(id int not null auto_increment unique,order_name varchar(60) not null,quantity int not null,price double not null,date1 varchar(12) not null,time1 varchar(12) not null);";
-        echo "<script>alert('".$name."')</script>";
+        // echo "<script>alert('".$name."')</script>";
         $stmt=$this->connect()->prepare($sql);
         $stmt->execute();
     }
