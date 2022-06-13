@@ -1,7 +1,6 @@
-     
-        <?php
-        require_once "../helpers/funtions.php";
-        checkLogin();
+<?php
+require_once "../helpers/funtions.php";
+checkLogin();
 require('fpdf184/fpdf.php');
 
 $conn=mysqli_connect("localhost","root","","peaceresort");
@@ -9,8 +8,9 @@ date_default_timezone_set('Asia/Kathmandu');
                 
 /*A4 width : 219mm*/
 
-$pdf = new FPDF('P','mm',[76.2,390]);
-$bill_number=0;
+$pdf = new FPDF('P','mm',[76,390]);
+// $bill_number=0;
+// $pdf->MakeFont();
 $result=mysqli_query($conn,"Select Count(Distinct time1) from sold_items");
 while($bill=mysqli_fetch_assoc($result)){
   $billnumber=$bill["Count(Distinct time1)"];
@@ -22,49 +22,49 @@ while($bill=mysqli_fetch_assoc($result)){
 }
 $pdf->AddPage();
 /*output the result*/
-$pdf->SetMargins($left=3,$top=1);
+$pdf->SetMargins($left=2,$top=1);
 // $pdf->Image('logo.png',7,3,15);
-$pdf->SetFont('Arial','B',14);
+$pdf->SetFont('Courier','B',14);
 $pdf->Cell(48 ,3,'Hotel Eternity',0,1,'C');
 $pdf->Ln();
 // // 
-// $pdf->SetFont('Arial','B',14);
+// $pdf->SetFont('Courier','B',14);
 // $pdf->Cell(0 ,3,'Talpona Beach, MDR48, Canacona, Goa, 403702',0,1,'C');
 // $pdf->Ln();
-$pdf->SetFont('Arial','I',11);
-$pdf->Cell(1,4);
-$pdf->Cell(0,6,'Sipadol, Su Na Pa-8, Bhaktapur');
-$pdf->Ln();
+// $pdf->SetFont('Courier','I',11);
+// $pdf->Cell(1,4);
+// $pdf->Cell(0,6,'Sipadol, Su Na Pa-8, Bhaktapur');
+// $pdf->Ln();
 
-$pdf->SetFont('Arial','I',12);
-$pdf->Cell(3,6);
-$pdf->Cell(0,6,'Phone');
-$pdf->Ln();
+// $pdf->SetFont('Courier','I',12);
+// $pdf->Cell(3,6);
+// $pdf->Cell(0,6,'Phone');
+// $pdf->Ln();
 
 $pdf->Cell(3,0);
 $pdf->Cell(0,6,'+977');
 $pdf->Ln();
-$pdf->SetFont("Arial",'B',12);
+$pdf->SetFont("Courier",'B',12);
 $pdf->cell(0,5,'',0,1);
-$pdf->Cell(15,4,'Bill no:',0,0,'L');
-$pdf->Cell(0,4,$billnumber,0,0);
+$pdf->Cell(19,4,'Bill no : '.$billnumber,0,0,'L');
+// $pdf->Cell(0,4,$billnumber,0,0);
 
-$pdf->SetFont("Arial",'',10);
+$pdf->SetFont("Courier",'B',10);
 $date=date("Y/m/d");
 $pdf->cell(0,4,'Date : '.$date,0,0,'R');
 $pdf->Ln();
-$pdf->SetFont("Arial",'B',12);
+$pdf->SetFont("Courier",'B',12);
 $pdf->Cell(11,5,'Name : '.$name,0,0);
 // $pdf->Cell(55,4,'$name');
 
 $pdf->Ln();
 
-$pdf->SetFont("Arial",'',10);
+$pdf->SetFont("Courier",'',10);
 $time=date("H:i a");
 $pdf->Cell(42,5,'Time :  '.$time,0,0);
 $pdf->Ln();
 
-// $pdf->SetFont("Arial",'B',12);
+// $pdf->SetFont("Courier",'B',12);
 $pdf->cell(8,5,'S.N',"T,B",0);
 $pdf->cell(32,5,"Item' name","T,B",0);
 $pdf->cell(10,5,'QTY',"T,B",0);
@@ -80,7 +80,7 @@ $result=mysqli_query($conn,$sql);
 $x=0;
 while($x<9)           
 {$x++;
-    $pdf->SetFont("Arial",'',8);
+    $pdf->SetFont("Courier",'',8);
     $pdf->cell(7,5,$x,0,0);
     $pname="\$row['name'] sadsadasd asd asd sa as";
     $qty=$x;//"\$row['quantity']";

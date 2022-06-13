@@ -1,11 +1,14 @@
 <?php
-require_once "../layout/header.php";
+if(session_status()==PHP_SESSION_NONE){
+  session_start();
+}
+include_once "../layout/header.php";
 // ////require_once "../includes/init.php";
 include_once "../classes/order_db.php";
 $order=new Order();
 ?>
 
-<!DOCTYPE html>
+<!--DOCTYPE html-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -237,8 +240,8 @@ if(isset($_POST["add_menu"])){
  }
 
 // Check file size
- if ($_FILES["fileToUpload"]["size"] > 500000) {
-  echo "alert('Sorry, your file is too large.greater than 428mb')";
+ if ($_FILES["fileToUpload"]["size"] > 9000000) {
+  echo "alert('Sorry, your file is too large.greater than 9000mb')";
   $uploadOk = 0;
  }
 

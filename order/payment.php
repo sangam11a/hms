@@ -7,7 +7,7 @@ if(isset($_POST["pay"])){
     $result=$order->get_temp_tables("Select * from `temp_table` where `table_number`='$table_number'",1);
 
 ?>
-<!DOCTYPE html>
+<!--DOCTYPE html-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">

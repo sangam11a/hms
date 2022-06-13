@@ -2,7 +2,7 @@
 include_once "../layout/header.php";
 $booking = new Order();
 ?>
-<!DOCTYPE html>
+<!--DOCTYPE html-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />

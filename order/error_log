@@ -1,0 +1,69 @@
+[02-Jun-2022 17:17:04 Asia/Kathmandu] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/thapasan/photographynepal.com.np/hmsss/classes/dbh.class.php:1) in /home2/thapasan/photographynepal.com.np/hmsss/layout/header.php on line 6
+[02-Jun-2022 17:02:36 Asia/Kolkata] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 3
+[02-Jun-2022 17:17:36 Asia/Kathmandu] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 17
+[02-Jun-2022 21:51:07 Asia/Kolkata] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/layout/header.php on line 3
+[02-Jun-2022 21:51:07 Asia/Kolkata] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 3
+[02-Jun-2022 22:06:07 Asia/Kathmandu] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 17
+[02-Jun-2022 21:52:18 Asia/Kolkata] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/layout/header.php on line 3
+[02-Jun-2022 21:52:18 Asia/Kolkata] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 3
+[02-Jun-2022 22:07:18 Asia/Kathmandu] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 17
+[02-Jun-2022 21:53:36 Asia/Kolkata] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/layout/header.php on line 3
+[02-Jun-2022 21:53:36 Asia/Kolkata] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 3
+[02-Jun-2022 22:08:36 Asia/Kathmandu] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 17
+[02-Jun-2022 21:59:55 Asia/Kolkata] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/layout/header.php on line 3
+[02-Jun-2022 21:59:55 Asia/Kolkata] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 3
+[02-Jun-2022 22:14:55 Asia/Kathmandu] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 17
+[02-Jun-2022 22:02:20 Asia/Kolkata] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/layout/header.php on line 3
+[02-Jun-2022 22:02:20 Asia/Kolkata] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 3
+[02-Jun-2022 22:17:20 Asia/Kathmandu] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 17
+[02-Jun-2022 22:21:11 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php:338
+Stack trace:
+#0 /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php(58): Temptable->create_temp_table('yyyyyyy')
+#1 {main}
+  thrown in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php on line 338
+[02-Jun-2022 22:22:36 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php:338
+Stack trace:
+#0 /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php(58): Temptable->create_temp_table('yyyyyyy')
+#1 {main}
+  thrown in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php on line 338
+[03-Jun-2022 07:08:49 Asia/Kolkata] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/layout/header.php on line 3
+[03-Jun-2022 07:08:49 Asia/Kolkata] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 3
+[03-Jun-2022 07:23:49 Asia/Kathmandu] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 18
+[03-Jun-2022 07:42:14 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php:338
+Stack trace:
+#0 /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php(58): Temptable->create_temp_table('niroj')
+#1 {main}
+  thrown in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php on line 338
+[03-Jun-2022 07:54:52 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php:343
+Stack trace:
+#0 /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php(58): Temptable->create_temp_table('fdgfdg')
+#1 {main}
+  thrown in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php on line 343
+[03-Jun-2022 07:59:26 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php:343
+Stack trace:
+#0 /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php(58): Temptable->create_temp_table('fdgfdg')
+#1 {main}
+  thrown in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php on line 343
+[03-Jun-2022 08:01:11 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php:343
+Stack trace:
+#0 /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php(58): Temptable->create_temp_table('fdgfdg')
+#1 {main}
+  thrown in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php on line 343
+[03-Jun-2022 08:02:27 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php:348
+Stack trace:
+#0 /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php(58): Temptable->create_temp_table('fdgfdg')
+#1 {main}
+  thrown in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php on line 348
+[03-Jun-2022 08:03:57 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php:352
+Stack trace:
+#0 /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php(58): Temptable->create_temp_table('fdgfdg')
+#1 {main}
+  thrown in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php on line 352
+[03-Jun-2022 08:09:18 Asia/Kathmandu] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php:388
+Stack trace:
+#0 /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php(58): Temptable->create_temp_table('fdgfdg')
+#1 {main}
+  thrown in /home2/thapasan/photographynepal.com.np/hmsss/classes/order_db.php on line 388
+[03-Jun-2022 15:14:21 Asia/Kathmandu] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php:6) in /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php on line 122
+[03-Jun-2022 15:14:32 Asia/Kathmandu] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php:6) in /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php on line 122
+[03-Jun-2022 15:14:55 Asia/Kathmandu] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php:6) in /home2/thapasan/photographynepal.com.np/hmsss/order/order2.php on line 122

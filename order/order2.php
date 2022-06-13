@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+<?php
+ if(session_status()==PHP_SESSION_NONE){
+  session_start();
+}
+
+include_once "../layout/header.php";
+include_once "../classes/order_db.php";
+?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,8 +15,9 @@
   <script>
     function print_orders_js(){
       let y=location.href.split("/order/")[0];
-      alert(y+"/print/kitchen_bill.php")
-      window.open(y+"/print/kitchen_bill.php","_blank");
+    //   alert(y+"/print/kitchen_bill.php")
+    //   window.open(y+"/print/kitchen_bill.php","_blank");/
+      location.href=y+'/print/kitchen_bill.php';
 
     }
  </script>
@@ -19,15 +27,11 @@
 </body>
 </html>
 <?php 
-include_once "../layout/header.php";
- include_once "../classes/order_db.php";
- if(session_status()==PHP_SESSION_NONE){
-   session_start();
- }
+
  $order=new Order();
  $temp_table=new Temptable();
- $sql="Create database if not exists temporary_data_peaceresort";
- $order->insert_to_booking($sql);
+//  $sql="Create database if not exists temporary_data_peaceresort";
+//  $order->insert_to_booking($sql);
  $error=10;
  if(isset($_POST["place_order"])){
   $food_item=$_POST["food_item"];
@@ -45,8 +49,8 @@ include_once "../layout/header.php";
 }
 if(isset($_POST['final_placement'])){
  $temp_table=new Temptable();
- echo "<pre>";
- print_r($_POST);
+//  echo "<pre>";
+//  print_r($_POST);
 //  echo "<Script>alert('".$_POST."')</script>";
    $name=$_POST['c_name2'];
    $name=$_POST["customer_name4"];
@@ -104,17 +108,18 @@ if(isset($_POST['final_placement'])){
   }
   // $print_data_status=$temp_table->insert_print_table($name,$table_name);
   if($error==0){
-    echo "<div class='alert alert-warning'>";
+    echo "          <div class='alert alert-warning'>";
                       echo "<script>alert('Order cannot be placed to database...Plz reorder everything')</script>";
                       echo "</div>";
   }
   if($error==1){
-    echo "<div class='alert alert-success'>";
+    // echo "<div class='alert alert-success'>";
     // echo "<script>alert('Order Succeded');</script>";
     $sql2="Update table_details set status='occupied' where table_number='$table_name'";
     $order->insert_to_booking($sql2);
-    echo "</div>";
-    echo "<script>location.href=location.href.split('/order/')[0]+'/print/kitchen_bill.php';</script>";
+    // echo "</div>";
+    echo "<script>location.href='../print/kitchen_bill.php';</script>";//Replaced by header and is being tested
+    // header("Location:../print/kitchen_bill.php");
   }
   $result1=$order->get_temp_tables("Select name,quantity,price from `inventory`",1);
   for($i=0;$i<count($array);$i+=1){
@@ -151,7 +156,7 @@ if(isset($_POST['final_placement'])){
  echo "<form method='post' action=''>";
   //  }
 ?>
-<!DOCTYPE html>
+<!--DOCTYPE html-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">

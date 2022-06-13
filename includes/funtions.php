@@ -1,5 +1,7 @@
 <?php
-
+if(session_status()==PHP_SESSION_NONE){
+    session_start();
+}
 function clean($value) {
     $value = trim($value);            
     $value = stripslashes($value);
@@ -8,12 +10,14 @@ function clean($value) {
 }
 
 function checkLogin() {
-    session_start();
-    if(isset($_SESSION['logged']) && isset($_SESSION['role'])){
+    // echo "<script>alert('".$_SESSION['role']."');</script>";
+    if(isset($_SESSION['role'])){//$_SESSION['logged']) && 
         return;
     }
     else{
-        session_destroy();header("Location: ../adminlogin/hms-admin.php?err");
+        session_destroy();
+        echo "<script>location.href= '../adminlogin/hms-admin.php?err'</script>";
         die;
     }
 }
+?>

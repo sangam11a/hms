@@ -1,7 +1,8 @@
 <?php
-
+if(session_status()==PHP_SESSION_NONE){
+    session_start();
+}
 include_once "../layout/header.php";
-
 if($_SESSION['role'] === 'admin'):
 $admin = new Admin();
 ?>

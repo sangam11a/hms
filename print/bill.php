@@ -1,11 +1,10 @@
-     
-        <?php
-        require_once "../helpers/funtions.php";
-        checkLogin();
+<?php
+include_once "../helpers/funtions.php";
+checkLogin();
 require('fpdf184/fpdf.php');
 try{
-    $conn=mysqli_connect("localhost","root","","peaceresort");
-    date_default_timezone_set('Asia/Kathmandu');
+    $conn=mysqli_connect("localhost","thapasan_sangam11","S@ng@m865421","thapasan_hotel_eternity");
+
                     
     /*A4 width : 219mm*/
 
@@ -49,7 +48,7 @@ try{
     $pdf->Cell(15,4,'Bill no:',0,0,'L');
     $pdf->Cell(0,4,$billnumber,0,0);
 
-    $pdf->SetFont("Arial",'',10);
+    $pdf->SetFont("Arial",'B',11);
     $date=date("Y/m/d");
     $pdf->cell(0,4,'Date : '.$date,0,0,'R');
     $pdf->Ln();
@@ -61,10 +60,10 @@ try{
 
     $pdf->SetFont("Arial",'',10);
     $time=date("H:i a");
-    $pdf->Cell(42,5,'Time :  '.$time,0,0);
+    $pdf->Cell(42,5,'Time : '.$time,0,0);
     $pdf->Ln();
 
-    // $pdf->SetFont("Arial",'B',12);
+    $pdf->SetFont("Arial",'B',12);
     $pdf->cell(8,5,'S.N',"T,B",0);
     $pdf->cell(32,5,"Item' name","T,B",0);
     $pdf->cell(10,5,'QTY',"T,B",0);
@@ -80,7 +79,7 @@ try{
       {
       while($row=mysqli_fetch_assoc($result))          
         {$x++;
-          $pdf->SetFont("Arial",'',8);
+          $pdf->SetFont("Arial",'',12);
           $pdf->cell(7,6,$x,0,0);
           $pname=$row['name'];
           $qty=$row['quantity'];
@@ -90,7 +89,7 @@ try{
           $tax=$row['tax'];
           $x_val=$pdf->GETX();
           $y_val=$pdf->GETY();
-          $pdf->MultiCell(32,6,$pname,0,0);    
+          $pdf->MultiCell(32,6,$pname,0,'L');    
           $y_new_val=$pdf->GETY();
           $pdf->SetXY($x_val+32,$y_val);
           $pdf->cell(10,6,$qty,0,0,"C");
@@ -102,23 +101,25 @@ try{
           }
       $tax=(($tax/100)*$total);
       $discount=($discount/100)*$total;
-      $pdf->cell(34,5,'',0,0,'L');
-      $pdf->cell(16,5,'Sub-Total',"B",0);
-      $pdf->cell(15,5,$total,1,"B",'C');
-
-      $pdf->cell(34,5,'',0,0,'L');
-      $pdf->cell(16,5,'Discount',"B",0);
-      $pdf->cell(15,5,$discount,1,"B",'C');
-
-      $pdf->cell(34,5,'',0,0,'L');
-      $pdf->cell(16,5,'Tax',"B",0);
-      $pdf->cell(15,5,$tax,1,"B",'C');
+      $pdf->cell(32,5,'',0,0,'L');
+      $pdf->cell(34,5,'Sub-Total : '.$total,"B",0);
+    //   $pdf->cell(15,5,$total,1,"B",'C');
+        $pdf->Ln();
+      $pdf->cell(32,5,'',0,0,'L');
+      $pdf->cell(34,5,'Discount : '.$discount,"B",0);
+    //   $pdf->cell(15,5,$discount,1,"B",'C');
+        $pdf->Ln();
+      $pdf->cell(32,5,'',0,0,'L');
+      $pdf->cell(34,6,'Tax : '.$tax,"B",0);
+    //   $pdf->cell(15,5,$tax,1,"B",'C');
+      $pdf->Ln();
       $total=$total+$tax-$discount;
-      $pdf->cell(34,5,'',0,0,'L');
-      $pdf->cell(16,5,'Total',"B",0);
-      $pdf->cell(15,5,$total,1,"B",'C');
-
-      $pdf->cell(47,5,'!!!!Thank you for visiting us!!!!',0,0,'C');
+      $pdf->cell(32,5,'',0,0,'L');
+      $pdf->cell(34,5,'Total : '.$total,"B",0);
+    //   $pdf->cell(15,5,$total,1,"B",'C');
+        $pdf->Ln();
+        $pdf->Ln();
+      $pdf->cell(78,5,'!!!!Thank you for visiting us!!!!',0,0,'C');
     }
     else{
       throw new Exception("myError");

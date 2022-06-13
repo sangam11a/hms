@@ -1,0 +1,27 @@
+[03-Jun-2022 02:25:47 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/helpers/funtions.php on line 3
+[03-Jun-2022 02:25:47 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/helpers/funtions.php on line 13
+[03-Jun-2022 02:25:47 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/helpers/funtions.php on line 18
+[03-Jun-2022 02:25:47 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/thapasan/photographynepal.com.np/hmsss/print/kitchen_bill.php:1) in /home2/thapasan/photographynepal.com.np/hmsss/helpers/funtions.php on line 18
+[03-Jun-2022 02:27:14 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/print/kitchen_bill.php on line 4
+[03-Jun-2022 02:27:14 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/helpers/funtions.php on line 3
+[03-Jun-2022 02:27:14 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/helpers/funtions.php on line 13
+[03-Jun-2022 02:27:14 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/helpers/funtions.php on line 18
+[03-Jun-2022 02:27:14 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/thapasan/photographynepal.com.np/hmsss/print/kitchen_bill.php:1) in /home2/thapasan/photographynepal.com.np/hmsss/helpers/funtions.php on line 18
+[03-Jun-2022 02:28:09 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/print/kitchen_bill.php on line 4
+[03-Jun-2022 02:28:09 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 3
+[03-Jun-2022 02:28:09 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 18
+[03-Jun-2022 02:36:26 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/print/kitchen_bill.php on line 4
+[03-Jun-2022 02:36:26 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 3
+[03-Jun-2022 02:36:26 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 18
+[03-Jun-2022 02:36:41 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/print/kitchen_bill.php on line 4
+[03-Jun-2022 02:36:41 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 3
+[03-Jun-2022 02:36:41 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 18
+[03-Jun-2022 02:37:16 UTC] PHP Warning:  A non-numeric value encountered in /home2/thapasan/photographynepal.com.np/hmsss/print/fpdf184/fpdf.php on line 580
+[03-Jun-2022 02:37:16 UTC] PHP Warning:  A non-numeric value encountered in /home2/thapasan/photographynepal.com.np/hmsss/print/fpdf184/fpdf.php on line 634
+[03-Jun-2022 02:37:16 UTC] PHP Warning:  A non-numeric value encountered in /home2/thapasan/photographynepal.com.np/hmsss/print/fpdf184/fpdf.php on line 860
+[03-Jun-2022 02:41:59 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 3
+[03-Jun-2022 02:41:59 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/includes/funtions.php on line 18
+[03-Jun-2022 02:42:33 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/helpers/funtions.php on line 3
+[03-Jun-2022 02:42:33 UTC] PHP Warning:  session_start(): Cannot start session when headers already sent in /home2/thapasan/photographynepal.com.np/hmsss/helpers/funtions.php on line 13
+[03-Jun-2022 02:42:33 UTC] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home2/thapasan/photographynepal.com.np/hmsss/helpers/funtions.php on line 18
+[03-Jun-2022 02:42:33 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/thapasan/photographynepal.com.np/hmsss/print/kitchen_bill.php:1) in /home2/thapasan/photographynepal.com.np/hmsss/helpers/funtions.php on line 18

@@ -1,5 +1,4 @@
-
-                <?php
+<?php
                 //    for($i=0;$i<30;$i++){
                 //     echo "<td>".date("Y/m/d")."</td></tr>";
                 //    }

@@ -1,9 +1,12 @@
 <?php
+if(session_status()==PHP_SESSION_NONE){
+    session_start();
+}
 include_once "../classes/order_db.php";
 include_once "../layout/header.php";
 $order=new Order();
 ?>
-<!DOCTYPE html>
+<!--DOCTYPE html-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">

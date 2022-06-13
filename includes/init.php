@@ -6,4 +6,5 @@ include_once "../classes/admin.class.php";
 include_once "../classes/customer.class.php";
 include_once "../classes/inventory_db.php";
 include_once "../classes/order_db.php";
-
+date_default_timezone_set('Asia/Kathmandu');
+?>

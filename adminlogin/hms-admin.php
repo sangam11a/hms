@@ -1,3 +1,10 @@
+<?php
+    if(session_status()==PHP_SESSION_NONE){
+        session_start();
+    }
+    include_once "../includes/init.php";
+?>
+
 <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
@@ -31,7 +38,6 @@
 
 <?php  
 
-    require_once "../includes/init.php";
 
      if($_SERVER['REQUEST_METHOD'] == "POST"){
 
@@ -58,12 +64,15 @@
                 if($admin->get($username) > 0){
                     $verify = $admin->get($username);
                     if(password_verify($password, $verify['password']) && $verify['role'] === $role){
-                        session_start();
+                        
                         $_SESSION['logged'] = $verify['username'];
                         $_SESSION['role'] = $verify['role'];
 
-                        header("Location: ../rooms/index.php");
-                        die;
+                       if($_SESSION["role"]!="admin") echo "<script>location.href='../rooms/index.php'</script>";
+                       else{
+                           echo "<script>location.href='../admin';</script>";
+                       }
+                        
                     }
                     else{
                         echo "

@@ -1,6 +1,5 @@
-
 <?php
-require_once "../helpers/funtions.php";
+include_once "../helpers/funtions.php";
 checkLogin();
 require('fpdf184/fpdf.php');
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')   
@@ -13,8 +12,8 @@ $url.= $_SERVER['HTTP_HOST'];
 // Append the requested resource location to the URL   
 $url.= $_SERVER['REQUEST_URI'];    
 $this_url=explode("/print",$url);
-$conn=mysqli_connect("localhost","root","","temporary_data_peaceresort");
-date_default_timezone_set('Asia/Kathmandu');
+$conn=mysqli_connect("localhost","thapasan_sangam11","S@ng@m865421","thapasan_temp_hotel_eternity");
+
                 
 /*A4 width : 219mm*/
 
@@ -78,10 +77,13 @@ while($row=mysqli_fetch_assoc($result))
     // $tax=$row["tax"];
     
     $pdf->Cell(8,4,$qty,0,0);
-    $pdf->MultiCell(47,4,$pname,0,0);
+    // $get_x=$pdf->GETX();
+    // $get_y=$pdf->GETY();
+    $pdf->MultiCell(49,5,$pname,0,"L");
+    // $new_y=$pdf->GETY();
     
     // $pdf->Ln();
-    $pdf->cell(0,2,"--------------------------------",0,1);
+    $pdf->cell(0,0,"","T",1);
     // $pdf->cell(15,5,$table_number,1,1);
 // $pdf->cell(15,5,$time,1,1);
 // $total=$total+(float)$subtotal;

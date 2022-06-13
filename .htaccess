@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^/?change-password/([0-9]+)$ /password/index.php?

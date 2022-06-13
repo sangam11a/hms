@@ -1,7 +1,7 @@
 <?php
 require_once "../layout/header.php";
 ?>
-<!DOCTYPE html>
+<!--DOCTYPE html-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,7 +27,7 @@ require_once "../layout/header.php";
                    var x="<table class='table table-dark'><thead><th>S.N</th><th>Customer Name</th><th>Food Ordered</th><th>Quantity</th><th>Price</th><th>User</th><th>Date</th><th>Time</th><th>Total</th></thead>"; 
                 var start=$("#starting_date").val();
                 var end=$("#ending_date").val();
-                    var sql="Select * from sold_items where date1>='"+start+"' and date1<='"+end+"' order by id desc";
+                    var sql="Select * from sold_items where date1>='"+start+"' and date1<='"+end+"' order by id ";
                 var paginateValue=$("#paginate_value").val();
                 $.ajax({
                         url:"../ajax/ajax_post.php",

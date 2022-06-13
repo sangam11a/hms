@@ -3,19 +3,23 @@ include_once "dbh.class.php";
 date_default_timezone_set('Asia/Kolkata');
 class Order extends Dbh{
     private $host = "localhost";
-    private $user = "root";
-    private $pwd = "";
-    private $pdo;
-    private $dbName="peaceresort";
+    private $user = "thapasan_sangam11";
+    private $pwd = "S@ng@m865421";
+    private $dbName = "thapasan_hotel_eternity";
 
     public function __construct()
     {
-        $sql="create table if not exists payment_mode (
+        try{$sql="create table if not exists payment_mode (
             id int not null auto_increment unique,
               payment_mode varchar(30) not null
             );";
             $stmt=$this->connect()->prepare($sql);
             $stmt->execute();
+            
+        }
+        catch(Exception $e){
+            echo $e;
+        }
 
     }
 
@@ -101,13 +105,18 @@ class Order extends Dbh{
         }
     }
     public function create_temp_table(){
-        $sql="Create table if not exists temp_table(id int not null auto_increment unique,table_number varchar(11) not null,food_item varchar(11) not null,price double not null,quantity int not null,date1 varchar(13) not null,time1 varchar(15) not null,total double not null,table_number varchar(10) not null)";
-        $stmt=$this->connect()->prepare($sql);
-        if($stmt->execute()){
-            echo "<script>console.log('Temp table newly created');</script>)";
+        try{$sql="Create table if not exists temp_table(id int not null auto_increment unique,table_number varchar(11) not null,food_item varchar(11) not null,price double not null,quantity int not null,date1 varchar(13) not null,time1 varchar(15) not null,total double not null,table_number varchar(10) not null)";
+            $stmt=$this->connect()->prepare($sql);
+            if($stmt->execute()){
+                echo "<script>console.log('Temp table newly created');</script>)";
+            }
+            else{
+                echo "<script>console.log('Temp table not created');</script>)";
+            }
+                
         }
-        else{
-            echo "<script>console.log('Temp table not created');</script>)";
+        catch(Exception $e){
+            echo $e;
         }
     }
 
@@ -152,6 +161,18 @@ class Order extends Dbh{
         else return 0;
     }
 
+
+    public function own_query($sql){
+        try{
+            $stmt=$this->connect()->prepare($sql);
+        $stmt->execute();
+         $result=$stmt->fetchAll();
+         return $result;
+        }
+        catch(Exception $e){
+            return [];
+        }
+    }
     public function get_temp_tables($sql,$count=0){
 
         $stmt=$this->connect()->prepare($sql);
@@ -180,7 +201,7 @@ class Order extends Dbh{
     }
 
     public function create_sold_record(){
-        $sql="create table if not exists sold_items(
+       try{ $sql="create table if not exists sold_items(
             id int not null auto_increment unique,
             table_number varchar(10) not null,
             customer_name varchar(40) not null,
@@ -194,70 +215,110 @@ class Order extends Dbh{
             )";
             $stmt=$this->connect()->prepare($sql);
             $stmt->execute();
+       }
+       catch(Exception $e){
+           echo $e;
+       }
     }
 
     public function create_new_database($sql){
-            $stmt=$this->connect()->prepare($sql);
-            $stmt->execute();
+           try{
+               $stmt=$this->connect()->prepare($sql);
+             $stmt->execute();
+               
+            }
+            catch(Exception $e){
+           echo $e;
+       }
     }
 
     public function add_sold_record($customer_name,$table_number,$food_item,$quantity,$price,$payment_mode){
-        $this->create_sold_record();
-        $date=date("Y-m-d");
-        $time=date("H:i:s");
-        $user="";
-        $total=$quantity*$price;
-        $sql="Insert into sold_items(`table_number`,`customer_name`,`food_item`,`quantity`,`price`,`date1`,`time1`,`user`,`total`,`payment_mode`,`day1`) values(?,?,?,?,?,?,?,?,?,?,?)";
-        $stmt=$this->connect()->prepare($sql);
-        $stmt->execute([$table_number,$customer_name,$food_item,$quantity,$price,$date,$time,$user,$total,$payment_mode,date("D")]);
-        echo "<script>location.href=location.href;</script>";
+       try{ $this->create_sold_record();
+            $date=date("Y-m-d");
+            $time=date("H:i:s");
+            $user="";
+            $total=$quantity*$price;
+            $sql="Insert into sold_items(`table_number`,`customer_name`,`food_item`,`quantity`,`price`,`date1`,`time1`,`user`,`total`,`payment_mode`,`day1`) values(?,?,?,?,?,?,?,?,?,?,?)";
+            $stmt=$this->connect()->prepare($sql);
+            $stmt->execute([$table_number,$customer_name,$food_item,$quantity,$price,$date,$time,$user,$total,$payment_mode,date("D")]);
+            echo "<script>location.href=location.href;</script>";
+           
+       }
+       catch(Exception $e){
+           echo $e;
+       }
     }
 
     public function delete_temp_data($table_number){
-        $sql="delete from temp_table where `table_number`=?";
-        $stmt=$this->connect()->prepare($sql);
-        if($stmt->execute([$table_number])){
-            echo "<script>console.log('payment sucessful');</script>";
+        try{$sql="delete from temp_table where `table_number`=?";
+            $stmt=$this->connect()->prepare($sql);
+            if($stmt->execute([$table_number])){
+                echo "<script>console.log('payment sucessful');</script>";
+            }
         }
+        catch(Exception $e){
+           echo $e;
+       }
     }
 
     public function add_new_category($category){
-        $sql="CREATE table if not exists categories(
-           `id` int not null auto_increment unique,
-            `category` varchar(38) not null primary key
-        )";
-        $stmt=$this->connect()->prepare($sql);
-        if($stmt->execute()){
-            $sql="Insert into categories(`category`) values(?)";
-           $stmt= $this->connect()->prepare($sql);
-            $stmt->execute([$category]);
+        try{
+            $sql="CREATE table if not exists categories(
+               `id` int not null auto_increment unique,
+                `category` varchar(38) not null primary key
+            )";
+            $stmt=$this->connect()->prepare($sql);
+            if($stmt->execute()){
+                $sql="Insert into categories(`category`) values(?)";
+               $stmt= $this->connect()->prepare($sql);
+                $stmt->execute([$category]);
+                
+            echo "<script>location.href=location.href;</script>";
+            }
             
-        echo "<script>location.href=location.href;</script>";
         }
+        catch(Exception $e){
+           echo $e;
+       }
     }
     public function get_all_categories(){
-        $sql="Select * from categories";
-        $stmt=$this->connect()->prepare($sql);
-        $stmt->execute();
-        while($result=$stmt->fetchAll()){
-            return $result;
+        try{
+                $sql="Select * from categories";
+            $stmt=$this->connect()->prepare($sql);
+            $stmt->execute();
+            while($result=$stmt->fetchAll()){
+                return $result;
+            }
         }
+        catch(Exception $e){
+           echo $e;
+       }
     }
     public function delete_menu_items($menu_photo){
-        $sql="Delete from `menu` where `menu_photo`='$menu_photo'";
-        $stmt=$this->connect()->prepare($sql);
-        $stmt->execute();
-        unlink($menu_photo);
-        echo "<script>location.href=location.href;</script>";
+       try{ $sql="Delete from `menu` where `menu_photo`='$menu_photo'";
+            $stmt=$this->connect()->prepare($sql);
+            $stmt->execute();
+            unlink($menu_photo);
+            echo "<script>location.href=location.href;</script>";
+           
+       }
+       catch(Exception $e){
+           echo $e;
+       }
     }
 
     public function get_payment_mode(){
-        $sql="select * from `payment_mode`";
-        $stmt=$this->connect()->prepare($sql);
-        $stmt->execute();
-        while($result=$stmt->fetchAll()){
-            return $result;
+        try{$sql="select * from `payment_mode`";
+            $stmt=$this->connect()->prepare($sql);
+            $stmt->execute();
+            while($result=$stmt->fetchAll()){
+                return $result;
+            }
+                
         }
+        catch(Exception $e){
+           echo $e;
+       }
     }
     public function print_table($sql){
         $stmt=$this->connect()->prepare($sql);
@@ -317,9 +378,9 @@ class Order extends Dbh{
 
 class Temptable{
     private $host = "localhost";
-    private $user = "root";
-    private $pwd = "";
-    private $dbName = "temporary_data_peaceresort";
+    private $user = "thapasan_sangam11";
+    private $pwd = "S@ng@m865421";
+    private $dbName = "thapasan_temp_hotel_eternity";
 
     protected function connect () {
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbName;
@@ -334,10 +395,15 @@ class Temptable{
     }
 
     public function create_temp_table($name){
-        $sql="Create table if not exists $name(id int not null auto_increment unique,order_name varchar(60) not null,quantity int not null,price double not null,date1 varchar(12) not null,time1 varchar(12) not null);";
-        // echo "<script>alert('".$name."')</script>";
-        $stmt=$this->connect()->prepare($sql);
-        $stmt->execute();
+      try{  $sql="Create table if not exists $name(id int not null auto_increment unique,order_name varchar(60) not null,quantity int not null,price double not null,date1 varchar(12) not null,time1 varchar(12) not null);";
+             // echo "<script>alert('".$name."')</script>";
+            $stmt=$this->connect()->prepare($sql);
+            $stmt->execute();
+              
+      }
+        catch(Exception $e){
+           echo $e;
+       }
     }
     // public function insert_print_table($name,$table_number){
     //     $sql="INSERT INTO `kitchen_print`(`table_number`, `customer_name`) values ('$table_number','$name')";
@@ -353,48 +419,74 @@ class Temptable{
 
     public function insert_print_table($order,$quantity,$table_number){
         // $name = str_replace(' ', '_', $name);
-        $time=date("H:i:s");
-        $sql="Insert into temp_table_print(`order_name`,`quantity`,`table_number`,`time`) values('$order','$quantity','$table_number','$time');";        
-        echo $sql;
-        $stmt=$this->connect()->prepare($sql);
-        if($stmt->execute()){
-           return 1;
-        }
-        else{
-            return 0;
-        }
+       try{ $time=date("H:i:s");
+            $sql="Insert into temp_table_print(`order_name`,`quantity`,`table_number`,`time`) values('$order','$quantity','$table_number','$time');";        
+            // echo $sql;
+            $stmt=$this->connect()->prepare($sql);
+            if($stmt->execute()){
+               return 1;
+            }
+            else{
+                return 0;
+            }
+               
+       }
+       catch(Exception $e){
+           echo $e;
+       }
     }
 
     public function insert_temp_table($name,$order,$quantity,$price){
-        $name = str_replace(' ', '_', $name);
-        $sql="Insert into $name(`order_name`,`quantity`,`price`,`date1`,`time1`) values(?,?,?,?,?);";        
-        $stmt=$this->connect()->prepare($sql);
-        $date=date("Y/m/d");
-        $time=date("H:i:s");
-        if($stmt->execute([$order,$quantity,$price,$date,$time])){
-           return 1;
+        try{
+            $name = str_replace(' ', '_', $name);
+            $sql="Insert into $name(`order_name`,`quantity`,`price`,`date1`,`time1`) values(?,?,?,?,?);";        
+            $stmt=$this->connect()->prepare($sql);
+            $date=date("Y/m/d");
+            $time=date("H:i:s");
+            if($stmt->execute([$order,$quantity,$price,$date,$time])){
+               return 1;
+            }
+            else{
+                return 0;
+            }
         }
-        else{
-            return 0;
-        }
+        catch(Exception $e){
+           echo $e;
+       }
     }
     public function get_temp_tables($sql,$var=0){
-        $stmt=$this->connect()->prepare($sql);
-        $stmt->execute();
-        $result=$stmt->fetchAll();
-       if($var==0) return json_encode($result);
-       else return $result;
+        try{$stmt=$this->connect()->prepare($sql);
+            $stmt->execute();
+            $result=$stmt->fetchAll();
+           if($var==0) return json_encode($result);
+           else return $result;
+        }
+        catch(Exception $e){
+           echo $e;
+       }
     }
     public function check_table_existence($sql){
-        $stmt=$this->connect()->prepare($sql);
-        $stmt->execute();
-        $result=$stmt->fetchAll();
-        if($result>0) return 1;
-        else return 0;
+       try{
+               $stmt=$this->connect()->prepare($sql);
+            $stmt->execute();
+            $result=$stmt->fetchAll();
+            if($result>0) return 1;
+            else return 0;
+           
+       }
+        catch(Exception $e){
+           echo $e;
+       }
     }
     public function any_stmt($sql){
-        $stmt=$this->connect()->prepare($sql);
-        $stmt->execute();
+       try{ 
+           $stmt=$this->connect()->prepare($sql);
+            $stmt->execute();
+           
+       }
+        catch(Exception $e){
+           echo $e;
+       }
     }
 }
 ?>
