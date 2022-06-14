@@ -2,14 +2,15 @@
 include_once "../helpers/funtions.php";
 checkLogin();
 require('fpdf184/fpdf.php');
+date_default_timezone_set('Asia/Kathmandu');
 try{
     
     $username="root";//"thapasan_sangam11"
     $password="";//"S@ng@m865421"
-    $conn=mysqli_connect("localhost",$username,$password,"thapasan_temp_hotel_eternity");          
+    $conn=mysqli_connect("localhost",$username,$password,"thapasan_hotel_eternity");          
     /*A4 width : 219mm*/
 
-    $pdf = new FPDF('P','mm',[76.2,390]);
+    $pdf = new FPDF('P','mm',[76.2,399]);
     $bill_number=0;
     $result=mysqli_query($conn,"Select Count(Distinct time1) from sold_items");
     while($bill=mysqli_fetch_assoc($result)){
@@ -24,28 +25,36 @@ try{
     /*output the result*/
     $pdf->SetMargins($left=3,$top=1);
     // $pdf->Image('logo.png',7,3,15);
-    $pdf->SetFont('Arial','B',14);
-    $pdf->Cell(48 ,3,'Hotel Eternity',0,1,'C');
+    $pdf->SetFont('Arial','B',12);    
+    $pdf->Cell(12,4,'');
+    $pdf->Cell(0,5,'Tax Invoice','',1,);
+    $pdf->Cell(-3,2,'');
+    $pdf->Cell(0,2,'***************************************************',0,1);
+    $pdf->SetFont('Arial','B',14);  
+    $pdf->Cell(0,6,'Hotel Eternity','');
     $pdf->Ln();
     // // 
     // $pdf->SetFont('Arial','B',14);
     // $pdf->Cell(0 ,3,'Talpona Beach, MDR48, Canacona, Goa, 403702',0,1,'C');
     // $pdf->Ln();
-    $pdf->SetFont('Arial','I',11);
-    $pdf->Cell(1,4);
-    $pdf->Cell(0,6,'Sipadol, Su Na Pa-8, Bhaktapur');
+    $pdf->SetFont('Arial','',11);
+    $pdf->Cell(2,4);
+    $pdf->Cell(0,4,'Sipadol, Suryabinayak-8, Bhaktapur');
     $pdf->Ln();
 
-    $pdf->SetFont('Arial','I',12);
-    $pdf->Cell(3,6);
-    $pdf->Cell(0,6,'Phone');
-    $pdf->Ln();
+    $pdf->SetFont('Arial','',11);
+    $pdf->Cell(2,4);
+    $pdf->Cell(0,5,'Contact : 9851312121','',1);
+    
+    $pdf->Cell(-3,2,'');
+    $pdf->Cell(0,2,'***************************************************',0,1);
+    // $pdf->Ln();
 
-    $pdf->Cell(3,0);
-    $pdf->Cell(0,6,'+977');
-    $pdf->Ln();
+    // $pdf->Cell(3,0);
+    // $pdf->Cell(0,6,'+977');
+    // $pdf->Ln();
     $pdf->SetFont("Arial",'B',12);
-    $pdf->cell(0,5,'',0,1);
+    $pdf->cell(0,1,'',0,1);
     $pdf->Cell(15,4,'Bill no:',0,0,'L');
     $pdf->Cell(0,4,$billnumber,0,0);
 
@@ -61,7 +70,8 @@ try{
 
     $pdf->SetFont("Arial",'',10);
     $time=date("H:i a");
-    $pdf->Cell(42,5,'Time : '.$time,0,0);
+    $pdf->Cell(37,5,'Time : '.$time,0,0);
+    $pdf->Cell(42,5,'PAN : 1232132');
     $pdf->Ln();
 
     $pdf->SetFont("Arial",'B',12);
@@ -80,7 +90,7 @@ try{
       {
       while($row=mysqli_fetch_assoc($result))          
         {$x++;
-          $pdf->SetFont("Arial",'',12);
+          $pdf->SetFont("Arial",'',10);
           $pdf->cell(7,6,$x,0,0);
           $pname=$row['name'];
           $qty=$row['quantity'];
@@ -119,8 +129,10 @@ try{
       $pdf->cell(34,5,'Total : '.$total,"B",0);
     //   $pdf->cell(15,5,$total,1,"B",'C');
         $pdf->Ln();
-        $pdf->Ln();
-      $pdf->cell(78,5,'!!!!Thank you for visiting us!!!!',0,0,'C');
+       $pdf->Ln();
+    $pdf->Cell(-3,2,'');
+       $pdf->Cell(0,2,'***************************************************',0,1);
+      $pdf->cell(78,5,'Thank you for visiting us!',0,0,'C');
     }
     else{
       throw new Exception("myError");

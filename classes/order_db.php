@@ -346,9 +346,12 @@ class Order extends Dbh{
 
     public function insert_to_booking($sql){
         $stmt=$this->connect()->prepare($sql);
-        try{$stmt->execute();}
+        try{
+            $stmt->execute();
+            return 1;
+        }
         catch(Exception $error){
-            echo "Some error is there in executing Statements";// echo "<script>console.log($error)</script>";
+            echo "<script>alert('Some error is there in executing Statements');</script>";// echo "<script>console.log($error)</script>";
         }
     }
 
