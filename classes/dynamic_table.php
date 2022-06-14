@@ -111,7 +111,8 @@ function table($caption,$title,$values,$total_rows,$table_name,$total_pages="10"
             // echo "<input type='text' value='$values'>";
         echo " <caption><h3>$caption</h3></caption>
         <table class='table'><tr>
-        ";$can=0;
+        ";
+        $can=0;
         $reason=0;//reason
         for($i=0;$i<count($title);$i++){
             echo "<td>";
@@ -126,6 +127,7 @@ function table($caption,$title,$values,$total_rows,$table_name,$total_pages="10"
         }
         echo "</tr>";
         $pp=1;
+        // print_r($values);
                 foreach($result as $row){
                     echo "<tr>";
                     
