@@ -3,9 +3,10 @@ include_once "../helpers/funtions.php";
 checkLogin();
 require('fpdf184/fpdf.php');
 try{
-    $conn=mysqli_connect("localhost","thapasan_sangam11","S@ng@m865421","thapasan_hotel_eternity");
-
-                    
+    
+    $username="root";//"thapasan_sangam11"
+    $password="";//"S@ng@m865421"
+    $conn=mysqli_connect("localhost",$username,$password,"thapasan_temp_hotel_eternity");          
     /*A4 width : 219mm*/
 
     $pdf = new FPDF('P','mm',[76.2,390]);

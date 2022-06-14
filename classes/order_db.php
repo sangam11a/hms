@@ -3,10 +3,8 @@ include_once "dbh.class.php";
 date_default_timezone_set('Asia/Kolkata');
 class Order extends Dbh{
     private $host = "localhost";
-    //private $user = "thapasan_sangam11";
-  //  private $pwd = "S@ng@m865421";
-    private $user = "root";
-    private $pwd = "";
+    private $user = "thapasan_sangam11";
+    private $pwd = "S@ng@m865421";
     private $dbName = "thapasan_hotel_eternity";
 
     public function __construct()
@@ -333,6 +331,7 @@ class Order extends Dbh{
     }
     
     public function updating_roomnumber($sql){
+        // echo "<script>alert('$sql')</script>";
         $stmt=$this->connect()->prepare($sql);
        try{
         $stmt->execute();
@@ -380,8 +379,8 @@ class Order extends Dbh{
 
 class Temptable{
     private $host = "localhost";
-    //private $user = "thapasan_sangam11";
-  //  private $pwd = "S@ng@m865421";
+    // private $user = "thapasan_sangam11";
+    // private $pwd = "S@ng@m865421";
     private $user = "root";
     private $pwd = "";
     private $dbName = "thapasan_temp_hotel_eternity";

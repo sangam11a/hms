@@ -10,7 +10,6 @@ function clean($value) {
 }
 
 function checkLogin() {
-    session_start();
     if(isset($_SESSION['logged']) && isset($_SESSION['role'])){
         return;
     }

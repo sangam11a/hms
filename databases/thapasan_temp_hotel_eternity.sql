@@ -1063,18 +1063,6 @@ INSERT INTO `Sangam` (`id`, `order_name`, `quantity`, `price`, `date1`, `time1`)
 -- Table structure for table `sangam`
 --
 
-CREATE TABLE `sangam` (
-  `id` int(11) NOT NULL,
-  `order_name` varchar(60) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `price` double NOT NULL,
-  `date1` varchar(12) NOT NULL,
-  `time1` varchar(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `sangam`
---
 
 INSERT INTO `sangam` (`id`, `order_name`, `quantity`, `price`, `date1`, `time1`) VALUES
 (1, 'Chowmin', 1, 200, '2022/05/27', '13:51:11'),
