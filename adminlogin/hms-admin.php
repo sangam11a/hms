@@ -3,6 +3,8 @@
         session_start();
     }
     include_once "../includes/init.php";
+    include_once "../classes/order_db.php";
+    $order=new Order();
 ?>
 
 <!-- CSS only -->
@@ -26,10 +28,25 @@
                                 <option value="admin">Admin</option>
                                 <option value="manager">Manager</option>
                                 <option value="reception">Reception</option>
+                                
+                                <option value="waiter">Waiter</option>
+                                <?php
+                                //     $result=$order->get_temp_tables("Select distinct role from admin");
+                                //    if(count($result)>0){
+                                //         foreach($result as $x){
+                                //             $option.="<option value='".strtolower($x)."'>ucfirst($x)</option>";
+                                //             echo $option;
+                                //         }
+                                //    }
+                                //    else{
+                                //     $option="<option value='".strtolower($x)."'>Please add role first</option>";
+                                //    }
+                                //    echo $option;
+                                ?>
                             </select>
                         </div>
                         <div class="form-group mt-2">
-                            <input class="btn btn-info" type="submit" name="adminlogin" class="btnSubmit" value="Login" />
+                            <input class="btn btn-info" type="submit" name="adminlogin" class="btnSubmit" value="Login"  />
                         </div>
                     </form>
                 </div>
@@ -68,7 +85,15 @@
                         $_SESSION['logged'] = $verify['username'];
                         $_SESSION['role'] = $verify['role'];
 
-                       if($_SESSION["role"]!="admin") echo "<script>location.href='../rooms/index.php'</script>";
+                       if($_SESSION["role"]!="admin") {
+                           if($_SESSION["role"]!="waiter") 
+                           {
+                             echo "<script>location.href='../rooms/index.php'</script>";
+                           }
+                            else{
+                                echo "<script>location.href='../order/order2.php'</script>";
+                            }
+                        }
                        else{
                            echo "<script>location.href='../admin';</script>";
                        }

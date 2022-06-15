@@ -2,6 +2,7 @@
 if(session_status()==PHP_SESSION_NONE){
     session_start();
 }
+echo "<script>alert('".$_SESSION["role"]."')</script>";
 include_once "../includes/init.php";
 date_default_timezone_set('Asia/Kathmandu');
 $check = checkLogin();
@@ -64,7 +65,8 @@ $check = checkLogin();
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <?php if ($_SESSION['role'] == "manager" || $_SESSION['role'] =="admin") { ?>
+                        
+                        <?php if ($_SESSION['role'] == "manager" || $_SESSION['role'] =="admin" || $_SESSION['role'] !="waiter") { ?>
                             <a class="nav-link" href="../admin/index.php">
                             <?php } else { ?>
                                 <a class="nav-link" href="../rooms/index.php">
@@ -125,7 +127,7 @@ $check = checkLogin();
                                     }  
                                 ?>
                               <?php
-                              if(!($_SESSION["role"]=="manager"||$_SESSION["role"]=="admin"))
+                              if($_SESSION["role"]=="manager"&&$_SESSION["role"]=="receptionist")
                                 {echo '
                                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRooms" aria-expanded="false" aria-controls="collapseRooms">
                                             <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
@@ -160,7 +162,9 @@ $check = checkLogin();
 
                                 ';   }
                                 else{
-                                  echo ' <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRooms" aria-expanded="false" aria-controls="collapseRooms">
+                                  if($_SESSION["role"]!="waiter")
+                                  {
+                                    echo ' <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseRooms" aria-expanded="false" aria-controls="collapseRooms">
                                             <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                                 Rooms
                                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -173,6 +177,7 @@ $check = checkLogin();
                                                 </a>                                                
                                             </nav>
                                         </div>';
+                                    }
                                 } 
                               ?>
                                 
@@ -258,11 +263,14 @@ $check = checkLogin();
                                     <nav class="sb-sidenav-menu-nested nav">
 
                                         <?php
-                                        if ($_SESSION["role"] != "admin") {
+                                        if ($_SESSION["role"] == "waiter") {
                                             echo '
                                             <a href="../order/order2.php" class="nav-link">
-                                            Take Orders
-                                        </a>
+                                            KOT
+                                        </a>';}
+                                        if($_SESSION["role"]!="waiter"&&$_SESSION["role"]!="admin")
+                                        {
+                                            echo'
                                         <a href="../order/Overall_orders.php" class="nav-link">
                                             Orders
                                         </a>
@@ -273,12 +281,13 @@ $check = checkLogin();
                                         Reports
                                         </a>
                                             ';
-                                        } else {
-                                            echo '
+                                        }
+                                        else {
+                                            if($_SESSION["role"]!="waiter"){echo '
                                             <a href="../inventory/add_inventory_details.php" class="nav-link">
                                                 Add inventory
                                             </a>
-                                            ';
+                                            ';}
                                         }
                                         ?>
 
@@ -289,7 +298,7 @@ $check = checkLogin();
 
 
                                 <?php
-                                if ($_SESSION["role"] != 'admin') {
+                                if ($_SESSION["role"] != 'admin'&&$_SESSION["role"] != 'waiter') {
                                     echo '<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#booking_details" aria-expanded="false" aria-controls="booking_details">
                                 <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                                 Booking
