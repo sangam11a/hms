@@ -12,8 +12,8 @@ $url.= $_SERVER['HTTP_HOST'];
 // Append the requested resource location to the URL   
 $url.= $_SERVER['REQUEST_URI'];    
 $this_url=explode("/print",$url);
-$username="root";//"thapasan_sangam11"
-$password="";//"S@ng@m865421"
+$username="root";
+$password="";
 $conn=mysqli_connect("localhost",$username,$password,"thapasan_temp_hotel_eternity");
 
                 

@@ -3,8 +3,8 @@ include_once "dbh.class.php";
 date_default_timezone_set('Asia/Kolkata');
 class Order extends Dbh{
     private $host = "localhost";
-    private $user = "thapasan_sangam11";
-    private $pwd = "S@ng@m865421";
+    //private $user = "root";
+   // private $pwd = "";
     private $dbName = "thapasan_hotel_eternity";
 
     public function __construct()
@@ -99,6 +99,7 @@ class Order extends Dbh{
         }
         $sql="Update `table_details` set `status`='$change' where `table_number`='$table_number'";
         $stmt=$this->connect()->prepare($sql);
+        echo "<script>alert('$sql')</script>";
         if($stmt->execute()){
             echo "<script>location.href=location.href;document.getElementById('information').innerHTML='Status of table $table_number changed sucessfully';</script>";
         
@@ -382,8 +383,8 @@ class Order extends Dbh{
 
 class Temptable{
     private $host = "localhost";
-    // private $user = "thapasan_sangam11";
-    // private $pwd = "S@ng@m865421";
+    //private $user = "root";
+   // private $pwd = "";
     private $user = "root";
     private $pwd = "";
     private $dbName = "thapasan_temp_hotel_eternity";
@@ -422,7 +423,19 @@ class Temptable{
     //         return(0);
     //     }
     // }
-
+    
+    public function delete_negative_order($tablename,$order_name){
+        try{
+            $sql="Delete from $tablename where order_name=? and quantity=1";
+            $stmt=$this->connect()->prepare($sql);
+            $stmt->execute([$order_name]);
+               
+       }
+       catch(Exception $e){
+           echo "<Script>alert('Some error occured removing negative values');</script>";
+       }
+    }
+    
     public function insert_print_table($order,$quantity,$table_number){
         // $name = str_replace(' ', '_', $name);
        try{ $time=date("H:i:s");
@@ -438,7 +451,7 @@ class Temptable{
                
        }
        catch(Exception $e){
-           echo $e;
+           echo "<Script>alert('".$e."')</script>";
        }
     }
 
@@ -457,7 +470,7 @@ class Temptable{
             }
         }
         catch(Exception $e){
-           echo $e;
+           echo "<Script>alert('".$e."')</script>";
        }
     }
     public function get_temp_tables($sql,$var=0){
@@ -468,7 +481,7 @@ class Temptable{
            else return $result;
         }
         catch(Exception $e){
-           echo $e;
+           echo "<Script>alert('".$e."')</script>";
        }
     }
     public function check_table_existence($sql){
@@ -481,7 +494,7 @@ class Temptable{
            
        }
         catch(Exception $e){
-           echo $e;
+           echo "<Script>alert('".$e."')</script>";
        }
     }
     public function any_stmt($sql){
@@ -491,7 +504,7 @@ class Temptable{
            
        }
         catch(Exception $e){
-           echo $e;
+           echo "<Script>alert('".$e."')</script>";
        }
     }
 }

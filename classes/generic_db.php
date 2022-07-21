@@ -2,10 +2,13 @@
 class Database {
 
     // localhost
-    private $host = "localhost";
+    // private $host = "localhost";
     private $user = "root";
     private $pwd = "";
     private $dbName;
+    private $host = "localhost";
+    //private $user = "root";
+   // private $pwd = "";
 
     public function __construct($dbName){
         $this->dbname=$dbName;

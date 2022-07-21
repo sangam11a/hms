@@ -5,9 +5,9 @@ require('fpdf184/fpdf.php');
 date_default_timezone_set('Asia/Kathmandu');
 try{
     
-    $username="root";//"thapasan_sangam11"
-    $password="";//"S@ng@m865421"
-    $conn=mysqli_connect("localhost",$username,$password,"thapasan_hotel_eternity");          
+    $username="thapasan_sangam11";
+    $password="S@ng@m865421";
+      $conn=mysqli_connect("localhost",$username,$password,"thapasan_hotel_eternity");          
     /*A4 width : 219mm*/
 
     $pdf = new FPDF('P','mm',[76.2,399]);

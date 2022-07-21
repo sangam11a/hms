@@ -2,8 +2,8 @@
 include_once "../classes/dbh.class.php";
 class Dynamic extends Dbh {
     private $host = "localhost";
-    private $user = "thapasan_sangam11";
-    private $pwd = "S@ng@m865421";
+    //private $user = "root";
+   // private $pwd = "";
     private $dbName = "thapasan_hotel_eternity";
     public function own_query($sql){
         $statement=$this->connect()->query($sql);

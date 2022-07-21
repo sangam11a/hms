@@ -110,12 +110,14 @@ if (isset($_POST['final_placement'])) {
   // echo "<pre>";
   $check_data=explode(";;",$_POST["hidden_Data2"]);
   $i=0;
-  do{
-    
+
+  do{    
     {$compare=strpos(strtolower($check_data[$i]),"drinks");
       $temp=explode(",",$check_data[$i]);
       // echo "<script>alert('".$temp[1].":".$temp[2]." :: $compare"."')</script>";
       if(strpos(strtolower($check_data[$i]),"drinks")){
+        
+       $result44=$order->get_temp_tables("Select price from inventory where name='$temp[0]'");
         $sql33="Update `inventory` set ";
         if($temp[1]=="1"){
           $sql33.="`quantity`=`quantity`-1 ";
@@ -123,7 +125,9 @@ if (isset($_POST['final_placement'])) {
         else{
           $sql33.="`quantity`=`quantity`+1 ";
         }
-        $sql33.="where name='$temp[0]' and `quantity`>0";
+        $sql33.="where name='$temp[0]' and `quantity`>0;";
+        $sql33.="Insert into `utilized_inventory`(name,quantity,selling_price,date1,time1,user) values('$temp[0]','$temp[1]','".$result[0]["price"]."','".date("Y-m-d")."','".date("H:i:s")."');";
+
         if($order->updating_roomnumber($sql33)){
           
         }
@@ -228,7 +232,7 @@ echo "<form method='post' action=''>";
       })
     }
 
-    function table_clicked(name, sign, category) {
+    function table_clicked(name, sign, category,price) {
       var table = document.getElementById("order-table");
       var row = table.insertRow(-1);
       var cell1 = row.insertCell(0);
@@ -242,7 +246,7 @@ echo "<form method='post' action=''>";
       }
       cell2.innerHTML = quantity;
       document.getElementById("hidden_Data").value += name + "," + quantity + ",";
-      document.getElementById("hidden_Data2").value += name + "," + quantity + "," + category + ";;";
+      document.getElementById("hidden_Data2").value += name + "," + quantity + "," + category +" , "+price+ ";;";
       console.log(document.getElementById("hidden_Data").value);
     }
 
@@ -262,7 +266,8 @@ echo "<form method='post' action=''>";
         var prevTable = $("#list-orders").html();
 
         let category = $(order).parent().parent().children()[1].lastChild.innerHTML
-        console.log(category);
+        let price=$(order).parent().parent().children()
+        console.log(price);
         if (!prevTable) {
           //   console.log("empty")
           //   table="<table class='table'><thead><th>Orders</th><th>Quantity</th></thead><tbody><td>"+id+"</td><td>"+y+"</td>"+"</tbody>";
@@ -283,6 +288,8 @@ echo "<form method='post' action=''>";
       $(order).html("   " + y + "   ");
 
       let category = $(order).parent().parent().children()[1].lastChild.innerHTML
+        let price=$(order).parent().parent().children() ///for future updates price
+        console.log(price);
       var prevTable = $("#list-orders").html();
       console.log(category)
       var table = "";

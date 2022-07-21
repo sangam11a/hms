@@ -16,30 +16,11 @@
 </head>
 <body>
     
-    <div style='font-size:14px;font-weight:300;'>
-        asdasdsad
-    </div>
-    <div style='font-size:12px;font-weight:300;'>
-        asdasdsad
-    </div>
-    <div style='font-size:11px;font-weight:300;'>
-        asdasdsad
-    </div>
-    <div style='font-size:13px;font-weight:300;'>
-        asdasdsad
-    </div>
+    <?php
+        include_once "../classes/order_db.php";
+        
 
-    <div style='font-size:14px;font-weight:400;'>
-        asdasdsad
-    </div>
-    <div style='font-size:12px;font-weight:400;'>
-        asdasdsad
-    </div>
-    <div style='font-size:11px;font-weight:400;'>
-        asdasdsad
-    </div>
-    <div style='font-size:13px;font-weight:400;'>
-        asdasdsad
-    </div>
+    ?>
+
 </body>
 </html>

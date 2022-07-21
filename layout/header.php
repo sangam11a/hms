@@ -2,7 +2,7 @@
 if(session_status()==PHP_SESSION_NONE){
     session_start();
 }
-echo "<script>alert('".$_SESSION["role"]."')</script>";
+// echo "<script>alert('".$_SESSION["role"]."')</script>";
 include_once "../includes/init.php";
 date_default_timezone_set('Asia/Kathmandu');
 $check = checkLogin();

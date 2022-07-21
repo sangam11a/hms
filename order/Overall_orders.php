@@ -20,9 +20,9 @@ $order=new Order();
       }
         .numberCircle {
     border-radius: 50%;
-    width: 44px;
-    height: 44px;
-    padding: 8px;
+    width: 100px;
+    height: 100px;
+    padding-top: 25px;
     margin-left:30%; 
     margin-top:7px;       
     background: #fff;
@@ -71,7 +71,8 @@ $order=new Order();
               });
             }
          function change_table_number(old_table){
-          console.log(old_table);
+          alert(old_table.value);
+          old_table=old_table.value
           document.getElementById('prev_table').value=old_table;          
           document.getElementById('prev_table2').value=old_table;
           var select_data="<select name='new_table_value'>";
@@ -161,14 +162,14 @@ $order=new Order();
                                  else{
                                   echo "<h4 class='card-text bg-success' style='padding-left:35%;color:white;'>".$result['status']."</h4><p>";
                                  }
-                                    echo "<button name='change_status' class='btn btn-info' type='submit' onclick='this.value=".$result['table_number']."'>Empty Table</button>";
+                                    echo "<button name='change_status' class='btn btn-info' type='submit' value='".$result['table_number']."'>Empty Table</button>";
                                     // echo "<i id='view_ordered_list' style='margin-left:24%;' class='far fa-eye' data-bs-toggle='modal' data-bs-target='#view_ordered_list'></i><input type='hidden' name='view_list'  id='view_list'>";
                                     // echo "<button name='change_status' class='btn btn-info' type='submit' onclick='this.value=".$result['table_number']."'>View Orders</button>";
                                 //     echo "<button type='button' name='view_orders_button' id='view_orders_button' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#view_orders' onclick='change_status(\"".$result['table_number']."\")'>     View orders
                                 //   </button>";
                                 
                                   echo "<button type='button' id='".$result['table_number']."' class='jqery btn btn-primary' data-bs-toggle='modal' data-bs-target='#view_orders' >"."View Order</button>";
-                                  echo "<button onclick='change_table_number(".$result['table_number'].")' type='button' class='btn btn-warning' data-bs-toggle='modal' data-bs-target='#change_table'>Change Table Number </button>";
+                                  echo "<button value='".$result['table_number']."' onclick='change_table_number(this)' type='button' class='btn btn-warning' data-bs-toggle='modal' data-bs-target='#change_table'>Change Table Number </button>";
                                     
                                   echo "</p></form>";
                                 echo "</div>";
@@ -254,6 +255,7 @@ if(isset($_POST["change_status"])){
     $number=$_POST["change_status"];
     $order->change_table_status($number);
     $sql2="Delete from temp_table where table_number='$number'";
+    echo "<script>alert('$sql2')</script>";
     $order->insert_to_booking($sql2);
     // $order->
 }

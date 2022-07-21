@@ -1,25 +1,46 @@
 <?php
-require_once "../helpers/funtions.php";
-checkLogin();
+// require_once "../helpers/funtions.php";
+// checkLogin();
 date_default_timezone_set('Asia/Kathmandu');
 require('fpdf184/fpdf.php');
 
 $pdf = new FPDF('P', 'mm', array(80,80));
+
 $pdf->AddPage();
-// Logo
- $pdf->Image('logo.png',60,2,15);
- // Arial bold 15
- $pdf->SetFont('Arial','B',8);
- // Title
- $pdf->Cell(0,0,'Peace Garden Restaurant');
- // Line break
- $pdf->Ln();
-$pdf->SetFont('Arial','I',10);
-$pdf->Cell(0,5,'Baluwatar, Kathmandu');
+/*output the result*/
+$pdf->SetMargins($left=3,$top=1);
+$pdf->SetFont('Arial','B',12);    
+$pdf->Cell(12,4,'');
+$pdf->Cell(0,5,'Invoice','',1);
+$pdf->Cell(-3,2,'');
+$pdf->Cell(0,2,'***************************************************',0,1);
+$pdf->SetFont('Arial','B',14);  
+
+$pdf->Image('logo.png',4,18,15);
+$pdf->Cell(18,6,'');
+$pdf->Cell(28,6,'Hotel Eternity','');
 $pdf->Ln();
-$pdf->Cell(0,0,'Phone (+977) 6566-56565');
+// // 
+// $pdf->SetFont('Arial','B',14);
+// $pdf->Cell(0 ,3,'Talpona Beach, MDR48, Canacona, Goa, 403702',0,1,'C');
+// $pdf->Ln();
+$pdf->SetFont('Arial','',11);
+// $pdf->Cell(2,4);/
+
+$pdf->Cell(18,6,'');
+$pdf->Cell(0,4,'Sipadol , Bhaktapur');
 $pdf->Ln();
-$pdf->Cell(45,0);
+
+$pdf->SetFont('Arial','',11);
+// $pdf->Cell(2,4);
+
+$pdf->Cell(18,6,'');
+$pdf->Cell(0,5,'Contact : 9851312121','',1);
+
+$pdf->Cell(-3,2,'');
+$pdf->Cell(0,2,'***************************************************',0,1);
+// $pdf->Ln();
+
 $pdf->Cell(0,5,'Date: 24 Jun 2021');
 $pdf->Ln();
 $pdf->SetFont('Arial','B',5);
